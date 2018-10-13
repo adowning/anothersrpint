@@ -1,0 +1,11 @@
+{
+    "provider": "gps",
+    "accuracy": 20,
+    "radius": null,
+    "lon": -95.29479833333335,
+    "time": 1539436759000,
+    "deviceId": "1f56890ba5289d50",
+    "bearing": null,
+    "lat": 32.32,
+    "speed": null
+}
