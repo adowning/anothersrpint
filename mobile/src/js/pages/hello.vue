@@ -12,7 +12,8 @@
 </template>
 <script>
 import { WxcCell } from 'weex-ui'
-
+ var TrackerPlugin = weex.requireModule('TrackerPlugin')
+ TrackerPlugin.startTracker()
 	export default {
 components: { WxcCell },
 	

@@ -13,6 +13,8 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.READ_LOGS"/>
     <!-- 这个权限用于进行网络定位 -->
@@ -100,28 +102,28 @@
 
 
         <!--wxApi-->
-        <activity
-                android:name=".wxapi.WXEntryActivity"
-                android:exported="true"
-                android:launchMode="singleTop"
-                android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+        <!--<activity-->
+                <!--android:name=".wxapi.WXEntryActivity"-->
+                <!--android:exported="true"-->
+                <!--android:launchMode="singleTop"-->
+                <!--android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.VIEW"/>-->
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <!--<category android:name="android.intent.category.DEFAULT"/>-->
 
-                <data android:scheme="your wx appId"/>
-            </intent-filter>
-        </activity>
+                <!--<data android:scheme="your wx appId"/>-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
 
-        <activity
-                android:name=".wxapi.WXPayEntryActivity"
-                android:exported="true"
-                android:launchMode="singleTop"/>
+        <!--<activity-->
+                <!--android:name=".wxapi.WXPayEntryActivity"-->
+                <!--android:exported="true"-->
+                <!--android:launchMode="singleTop"/>-->
 
         <!--amap-->
 
-        <service android:name="com.amap.api.location.APSService"></service>
+        <!--<service android:name="com.amap.api.location.APSService"></service>-->
         <!--amap finish-->
         <meta-data
             android:name="PUSH_APPID"
@@ -133,14 +135,23 @@
             android:name="PUSH_APPSECRET"
             android:value="${GETUI_APP_SECRET}"/>
 
-        <receiver
-            android:name="com.eros.erosplugingt.GTPushReceiver"
-            android:exported="false">
+        <!--<receiver-->
+            <!--android:name="com.eros.erosplugingt.GTPushReceiver"-->
+            <!--android:exported="false">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.igexin.sdk.action.${GETUI_APP_ID}"/>-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+
+        <service android:name="com.andrews.tracker.TrackingService" />
+        <receiver android:name="com.andrews.tracker.AutostartReceiver">
             <intent-filter>
-                <action android:name="com.igexin.sdk.action.${GETUI_APP_ID}"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>
