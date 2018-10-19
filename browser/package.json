@@ -1,0 +1,39 @@
+{
+  "name": "shared",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "fuser -k 8080/tcp ; vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "date-fns": "^1.29.0",
+    "dotenv": "^5.0.1",
+    "is-online": "^7.0.0",
+    "js-cookie": "^2.2.0",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "material-design-icons-iconfont": "^3.0.3",
+    "minimongo": "^5.0.1",
+    "register-service-worker": "^1.0.0",
+    "roboto-fontface": "*",
+    "vee-validate": "^2.0.6",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1",
+    "vuetify": "^1.2.0",
+    "vuex": "^3.0.1",
+    "vuex-geolocation": "^1.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.4",
+    "@vue/cli-plugin-eslint": "^3.0.4",
+    "@vue/cli-plugin-pwa": "^3.0.4",
+    "@vue/cli-service": "^3.0.4",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue-cli-plugin-vuetify": "^0.2.1",
+    "vue-online": "^1.1.9",
+    "vue-template-compiler": "^2.5.17"
+  }
+}
