@@ -21,12 +21,31 @@ import android.os.Handler;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.eros.framework.constant.WXEventCenter;
+import com.eros.framework.event.GlobalEvent;
+import com.eros.framework.manager.impl.GlobalEventManager;
+import com.eros.wx.App;
 import com.eros.wx.R;
+import com.eros.wx.TrackerPlugin;
+import com.taobao.weex.WXSDKInstance;
+
+import org.greenrobot.eventbus.EventBus;
+import org.json.JSONObject;
+
+import io.ably.lib.realtime.AblyRealtime;
+import io.ably.lib.realtime.Channel;
+import io.ably.lib.realtime.CompletionListener;
+import io.ably.lib.types.AblyException;
+import io.ably.lib.types.ErrorInfo;
 
 //import com.weex.app.R;
 
 public class TrackingController implements PositionProvider.PositionListener, NetworkManager.NetworkHandler {
+
+
+
 
     private static final String TAG = TrackingController.class.getSimpleName();
     private static final int RETRY_DELAY = 30 * 1000;
@@ -191,9 +210,10 @@ public class TrackingController implements PositionProvider.PositionListener, Ne
         });
     }
 
-    private void send(final Position position) {
+    private void send(final Position position)  {
         log("send", position);
         lock();
+
         String request = ProtocolFormatter.formatRequest(url, position);
         RequestManager.sendRequestAsync(request, new RequestManager.RequestHandler() {
             @Override
@@ -206,7 +226,29 @@ public class TrackingController implements PositionProvider.PositionListener, Ne
                 }
                 unlock();
             }
+
         });
+//        AblyRealtime ably = null;
+//        try {
+//            ably = new AblyRealtime("nfET_A.QjvYvA:FPKPdLUkzdvRZHNc");
+//            Channel channel = ably.channels.get("test");
+//            channel.publish("update", "{ \"team\": \"Man United\" }", new CompletionListener() {
+//                @Override
+//                public void onSuccess() {
+//                    EventBus.getDefault().post(new MessageEvent( position ));
+//
+//
+//                }
+//
+//                @Override
+//                public void onError(ErrorInfo reason) {
+//                    EventBus.getDefault().post(new MessageEvent(  reason));
+//
+//                }
+//            });
+//        } catch (AblyException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void retry() {

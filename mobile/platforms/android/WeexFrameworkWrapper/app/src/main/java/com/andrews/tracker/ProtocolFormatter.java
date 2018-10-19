@@ -36,7 +36,6 @@ public class ProtocolFormatter {
                 .appendQueryParameter("altitude", String.valueOf(position.getAltitude()))
                 .appendQueryParameter("accuracy", String.valueOf(position.getAccuracy()))
                 .appendQueryParameter("batt", String.valueOf(position.getBattery()));
-        Log.d("asdf", builder.toString());
         if (position.getMock()) {
             builder.appendQueryParameter("mock", String.valueOf(position.getMock()));
         }

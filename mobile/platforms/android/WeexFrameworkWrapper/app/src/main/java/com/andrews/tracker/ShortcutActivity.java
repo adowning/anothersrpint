@@ -40,6 +40,12 @@ import android.widget.Toast;
 
 import com.eros.wx.R;
 
+import io.ably.lib.realtime.AblyRealtime;
+import io.ably.lib.realtime.Channel;
+import io.ably.lib.realtime.CompletionListener;
+import io.ably.lib.types.AblyException;
+import io.ably.lib.types.ErrorInfo;
+
 //import com.weex.app.R;
 
 public class ShortcutActivity extends AppCompatActivity {
@@ -153,6 +159,37 @@ public class ShortcutActivity extends AppCompatActivity {
 
         String request = ProtocolFormatter.formatRequest(
                 preferences.getString(MainFragment.KEY_URL, null), position, ALARM_SOS);
+//        AblyRealtime ably = null;
+//        try {
+//            ably = new AblyRealtime("nfET_A.QjvYvA:FPKPdLUkzdvRZHNc");
+//            Channel channel = ably.channels.get("test");
+//            channel.publish("update", "{ \"team\": \"Man United\" }", new CompletionListener() {
+//                @Override
+//                public void onSuccess() {
+//                    runOnUiThread(new Runnable() {
+//                        public void run() {
+//
+////                            Toast.makeText(ShortcutActivity.this, "Cool Ha?", Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//                }
+//
+//                @Override
+//                public void onError(ErrorInfo reason) {
+//                    runOnUiThread(new Runnable() {
+//                        public void run() {
+//
+////                            Toast.makeText(ShortcutActivity.this, "Cool Ha?", Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//                }
+//            });
+//        } catch (AblyException e) {
+//            e.printStackTrace();
+//        }
+//
+
+
 
         RequestManager.sendRequestAsync(request, new RequestManager.RequestHandler() {
             @Override

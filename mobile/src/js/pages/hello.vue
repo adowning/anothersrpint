@@ -12,16 +12,20 @@
 </template>
 <script>
 import { WxcCell } from 'weex-ui'
- var TrackerPlugin = weex.requireModule('TrackerPlugin')
- TrackerPlugin.startTracker()
 	export default {
 components: { WxcCell },
-	
+	created(){
+    weex.requireModule('TrackerPlugin').startTracker(function(resp){ console.log(resp); })
+
+  },
 	methods: {
          toPageA () {
             this.$router.open({
                 name: 'event.a'
             })
+        },
+        receivedLocation(){
+          console.log("asdf")
         }
 	}
 	}
